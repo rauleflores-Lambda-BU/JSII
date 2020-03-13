@@ -15,7 +15,7 @@
  * should return 'foofoo'.
 */
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+  return callback(stringList[0]);
 }
 
 // ⭐️ Example Challenge END ⭐️
@@ -48,8 +48,8 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(list, cb) {
-  return cb(list.length);
+function processLength(list, callback) {
+  return callback(list.length);
 }
 
 /**
@@ -66,8 +66,8 @@ function processLength(list, cb) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(stringList, cb) {
-  return cb(stringList.pop());
+function processLastItem(stringList, callback) {
+  return callback(stringList.pop());
 }
 
 /**
@@ -88,8 +88,8 @@ function processLastItem(stringList, cb) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(num1, num2, cb) {
-  return cb(num1+num2);
+function processSum(num1, num2, callback) {
+  return callback(num1+num2);
 }
 
 /**
@@ -110,8 +110,8 @@ function processSum(num1, num2, cb) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(num1, num2, cb) {
- return cb(num1*num2);
+function processProduct(num1, num2, callback) {
+ return callback(num1*num2);
 }
 
 /**
@@ -132,10 +132,10 @@ function processProduct(num1, num2, cb) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(list, cb) {
-
+function processDuplicateFree(list, callback) {
+  let dupeFree = [...new Set(list)];
+  return dupeFree;
 }
-
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 
