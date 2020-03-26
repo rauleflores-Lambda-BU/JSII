@@ -48,9 +48,22 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+// function takes two params (list, callback)
+// list is an array
+// callback takes the length of list array as param
+// returns result of passing list.length into callback
+function processLength(list, callback) {
+  return callback(list.length);
 }
+
+
+
+
 
 /**
  * ### Challenge `processLastItem`
@@ -66,9 +79,23 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+// function takes two params (list, callback)
+// stringList is an array
+// callback takes the last item of array as param
+// returns result of passing the last element in an array
+function processLastItem(stringList, callback) {
+  // to get the last item I have to subtract one from the length of array
+  return callback(stringList[stringList.length - 1]);
 }
+
+
+
+
 
 /**
  * ### Challenge `processSum`
@@ -88,9 +115,24 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+// function takes three params (two numbers and a callback)
+// callback takes sum of the two numbers as param
+// returns result of passing sum into cb
+function processSum(num1, num2, callback) {
+  //declare a variable for sum
+  let sum = num1 + num2;
+  //pass sum into cb and return
+  return callback(sum)
 }
+
+
+
+
 
 /**
  * ### Challenge `processProduct`
@@ -110,9 +152,24 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+// function takes three params (two numbers and a callback)
+// callback takes product of the two numbers as param
+// returns result of passing product into cb
+function processProduct(num1, num2, callback) {
+  // declare a variable for product
+  let product = num1 * num2;
+  // pass product into cb and return
+  return callback(product);
 }
+
+
+
+
 
 /**
  * ### Challenge `processDuplicateFree`
@@ -132,9 +189,34 @@ function processProduct(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
-}
+
+
+
+
+
+// need a HOF that takes two params (list, callback)
+// list - array of elements
+// callback - a function that takes an array
+// returns the result
+// the callback should take an array and return a duplicate free version
+function processDuplicateFree(list, callback) {
+  let deDuped = [];
+  // for loop for each value
+  // forEach returns undefined so we need a var to store our answers
+  list.forEach(value => {
+    // if our value doesnt exist in array
+    if(!deDuped.includes(value)) {
+      // add it
+      deDuped.push(value)
+    } // else
+    // do nothing
+  })
+  return deDuped;
+ }
+
+
+
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -155,9 +237,29 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
-  /* code here */
+
+
+
+
+
+// function that takes one param (strings)
+// strings - an array of strings
+// the function will look through the array and return lowercased versions
+function lowerCaseStrings(strings) {
+  //declare a new array
+  const lowerCase = [];
+  // new array
+  // function should look through original array and push lowercase versions of the strings
+  strings.forEach(arrItem => {
+    lowerCase.push(arrItem.toLowerCase())
+  })
+  //return the new array
+  return lowerCase;
 }
+
+
+
+
 
 /**
  * ### Challenge `isItAnApple`
@@ -174,9 +276,32 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+
+
+
+
+
+// function that takes one param (strings)
+// strings is an array that contains strings
+// Using .map the function should check each value in the array
+// if value === "apple" return true
+// else return false
+// .map creates a new array
+// return result
+function isItAnApple(strings) {
+  // .map on the array
+  return strings.map(arrItem => {
+    if(arrItem === "apple"){
+      return true
+    } else {
+      return false
+    }
+  })
 }
+
+
+
+
 
 /**
  * ### Challenge `removeApple`
@@ -194,9 +319,25 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+
+
+
+
+
+// function takes one param (strings)
+// strings is an array
+// function returns an array without specific string
+// need to remove the string 'apple'
+// function is case sensitive
+function removeApple(strings) {
+  // filter through array
+  // return all strings that don't match 'apple'
+  return strings.filter( string => string !== 'apple')
 }
+
+
+
+
 
 /**
  * ### Challenge `stringSmash`
@@ -213,9 +354,29 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
-  /* code here */
+
+
+
+
+
+// function takes one param
+// param strings is an array of strings
+/* function takes param and using .reduce() condenses and 
+returns all strings in the array into a singular string */
+ // case is not changed
+ /* reduce takes two arguments (total value, current value)
+  as well as two optional arguments (index, array)*/
+function stringSmash(strings) {
+  // function should take all the items in the array and reduce into a single string
+  // return result
+  return strings.reduce((total, currVal) =>{
+    return total + currVal;
+  })
 }
+
+
+
+
 
 // A local community center is holding a fund raising 5k fun run and has invited
 // 50 small businesses to make a small donation on their behalf for some much needed
@@ -232,9 +393,33 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+//function takes one param
+//param runners is an array of different runners with a few key:value pairs each
+/* function returns an arry containing only strings
+ that display "last name, first name" for each runner */
+function getFullNames(runners) {
+  // function should look through array and target only first/last name key:value pairs
+  // it will return those pairs into one string each
+  // it will push results into a new array (.forEach)
+  // declare a new, empty, array
+  const fullNames = [];
+  // forEach will look through runners
+  runners.forEach((a)=>{
+    // names will be pushed into empty array
+    fullNames.push(`${a.last_name}, ${a.first_name}`)
+  })
+  // return new names array
+  return fullNames;
 }
+
+
+
+
 
 /**
  * ### Challenge `firstNamesAllCaps`
@@ -248,9 +433,27 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+// function takes one param
+// param runners is an array of different runners with a few key:value pairs each
+/* using .map the function will return all the
+   runners first names in all caps */
+// .map returns a new array
+function firstNamesAllCaps(runners) {
+  // function should look through array and target only first name key:value pairs
+  // it will return those pairs into one string each
+  return runners.map(value => {
+    return `${value.first_name.toUpperCase()}`
+  })
 }
+
+
+
+
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
@@ -266,9 +469,27 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+// function takes two params (runnners array & a shirt size)
+// function returns an array containing only the runners who have the shirt size we're looking for
+// returns an object
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  // we want to filter out any runner that doesn't match the shirt size
+  // return runners.filter(runner => runner.shirt_size === tShirtSize)
+  return runners.filter( runner => {
+    if (runner.shirt_size === tShirtSize){
+      return runner;
+    }
+  })
 }
+
+
+
+
 
 /**
  * ### Challenge `tallyUpDonations`
@@ -281,9 +502,26 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+
+
+
+// function takes one param (runners)
+// runners is an array of objects
+// function returns total sum of runner's donations
+function tallyUpDonations(runners) {
+  // apply .reduce to runners array
+  return runners.reduce((total, currValue)=>{
+    // add donation to initial value
+    return total + currValue.donation;
+    //intial value = 0
+  }, 0)
 }
+
+
+
+
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
